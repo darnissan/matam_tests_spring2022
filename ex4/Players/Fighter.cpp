@@ -2,8 +2,6 @@
 
 using std::string;
 
-
-
 int Fighter::getAttackStrength() const
 {
     int force = (Player::getAttackStrength() - Player::getLevel());

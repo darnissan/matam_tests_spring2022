@@ -2,12 +2,13 @@
 #define EX4_FIGHTER_H
 #include "Player.h"
 
-class Fighter : public Player {
+class Fighter : public Player
+{
 
 public:
     Fighter(std::string name)
-        : Player(name) {};
-    ~Fighter() {};
+        : Player(name){};
+    ~Fighter(){};
     int getAttackStrength() const override;
     std::string getJob() const override;
 };

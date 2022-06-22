@@ -1,6 +1,7 @@
 #include "Pitfall.h"
 #include "Card.h"
 #include "../Players/Rogue.h"
+const int NO_DAMAGE = 0;
 const int hp_damage = 10;
 void Pitfall::print(std::ostream &os) const
 {
@@ -14,20 +15,20 @@ Pitfall::Pitfall()
 }
 void Pitfall::uniqeAction(std::unique_ptr<Player> &player)
 {
-     try
+    try
     {
-    Rogue& isRogue=dynamic_cast<Rogue&>(*player);
-    isRogue.damage(0);
+        Rogue &isRogue = dynamic_cast<Rogue &>(*player);
+        isRogue.damage(NO_DAMAGE);
     }
-    catch(const std::bad_cast&)
+    catch (const std::bad_cast &)
     {
-         printPitfallMessage(false);
+        printPitfallMessage(false);
         player->damage(hp_damage);
         return;
     }
-    
+
     printPitfallMessage(true);
-        return;
+    return;
     /*
     if (player->getJob() == "Rogue")
     {

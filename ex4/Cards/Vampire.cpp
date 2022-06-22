@@ -1,13 +1,15 @@
 #include "Vampire.h"
 #include "BattleCard.h"
 #include "Card.h"
-
+const int VAMPIRE_COINS = 2;
+const int VAMPIRE_FORCE = 10;
+const int VAMPIRE_DAMGAE_UPON_LOSS = 10;
 Vampire::Vampire()
 {
     m_cardName = "Vampire";
-    m_coins = 2;
-    m_damageUponLoss = 10;
-    m_force = 10;
+    m_coins = VAMPIRE_COINS;
+    m_damageUponLoss = VAMPIRE_DAMGAE_UPON_LOSS;
+    m_force = VAMPIRE_FORCE;
 }
 
 void Vampire::uniqeAction(std::unique_ptr<Player> &player)

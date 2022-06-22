@@ -85,35 +85,34 @@ std::unique_ptr<Card> Mtmchkin::StringToUniquePtrCard(const std::string &string)
 */
 Mtmchkin::~Mtmchkin()
 {
-     m_players.clear();
-        m_WinningPlayers.clear();
-        m_LosingPlayers.clear();
-        m_deckOfCards.clear();
-        m_leadBoard.clear();
+    m_players.clear();
+    m_WinningPlayers.clear();
+    m_LosingPlayers.clear();
+    m_deckOfCards.clear();
+    m_leadBoard.clear();
 }
 void Mtmchkin::ReadingCardsFromFile(const std::string fileName)
 {
-    
-    
 
     std::ifstream file(fileName);
-    try{
-    if (!file.is_open())
+    try
     {
-        throw DeckFileNotFound("Deck File Error: File not found");
+        if (!file.is_open())
+        {
+            throw DeckFileNotFound("Deck File Error: File not found");
+        }
+        if (is_empty(file) || is_blank(file))
+        {
+            throw DeckFileInvalidSize("Deck File Error: Deck size is invalid");
+        }
     }
-    if (is_empty(file)||is_blank(file))
+    catch (...)
     {
-        throw DeckFileInvalidSize("Deck File Error: Deck size is invalid");
-    }
-    }
-    catch(...)
-    {
-        //mapStringToCard.clear();
-        
+        // mapStringToCard.clear();
+
         throw;
     }
-    int lineNumber = 1;
+    int lineNumber = FIRST_LINE_INDEX;
     std::shared_ptr<Card> currentCard;
 
     static std::map<std::string, const std::shared_ptr<Card>> mapStringToCard = {{"Dragon", std::shared_ptr<Card>(new Dragon())}, {"Fairy", std::shared_ptr<Card>(new Fairy())}, {"Goblin", std::shared_ptr<Card>(new Goblin())}, {"Pitfall", std::shared_ptr<Card>(new Pitfall())}, {"Treasure", std::shared_ptr<Card>(new Treasure())}, {"Vampire", std::shared_ptr<Card>(new Vampire())}, {"Barfight", std::shared_ptr<Card>(new Barfight())}, {"Merchant", std::shared_ptr<Card>(new Merchant())}};
@@ -123,7 +122,6 @@ void Mtmchkin::ReadingCardsFromFile(const std::string fileName)
     {
         std::string line;
         std::getline(file, line);
- 
 
         if (!isStringInVector(CardTypes, line))
         {
@@ -147,46 +145,43 @@ void Mtmchkin::ReadingPlayersFromUser()
 {
     const std::vector<const char *> PlayerTypes = {"Wizard", "Rogue", "Fighter"};
     std::string userInput;
-    
+
     bool validTeamSize = false;
-    
+
     while (validTeamSize == false)
     {
-        printEnterTeamSizeMessage();    
-        std::getline(std::cin,userInput);
-       // std::cout<<"current input been tested is :"<<userInput<<std::endl;
+        printEnterTeamSizeMessage();
+        std::getline(std::cin, userInput);
+        // std::cout<<"current input been tested is :"<<userInput<<std::endl;
         try
         {
-            m_numberOfPlayers = std::stoi(userInput);    
-           // std::cout<<"this prints from the if"<<std::endl;
-            //printInvalidTeamSize();
-            //printEnterTeamSizeMessage();
+            m_numberOfPlayers = std::stoi(userInput);
+            // std::cout<<"this prints from the if"<<std::endl;
+            // printInvalidTeamSize();
+            // printEnterTeamSizeMessage();
         }
         catch (std::invalid_argument const &ex)
         {
-            validTeamSize=false;
-            //std::cout<<"this prints from the catch"<<std::endl;
-           // printInvalidTeamSize();
-            //printEnterTeamSizeMessage();
-            m_numberOfPlayers=-1;
+            validTeamSize = false;
+            // std::cout<<"this prints from the catch"<<std::endl;
+            // printInvalidTeamSize();
+            // printEnterTeamSizeMessage();
+            m_numberOfPlayers--;
         }
-        catch  (std::out_of_range)
-    {
-            m_numberOfPlayers=-1;
-            validTeamSize=false;
-    }
-    
-        if (m_numberOfPlayers>=2&&m_numberOfPlayers<=6)
+        catch (std::out_of_range)
         {
-            validTeamSize=true;
+            m_numberOfPlayers--;
+            validTeamSize = false;
+        }
+
+        if (m_numberOfPlayers >= MIN_TEAM_SIZE && m_numberOfPlayers <= MAX_TEAM_SIZE)
+        {
+            validTeamSize = true;
         }
         else
         {
             printInvalidTeamSize();
-            
         }
-        
-        
     }
     bool validPlayerName = false, validClassName = false;
     std::string userClassInput;
@@ -202,7 +197,7 @@ void Mtmchkin::ReadingPlayersFromUser()
             {
                 printInvalidName();
                 std::cin >> userInput;
-                std::cin >> userClassInput;  
+                std::cin >> userClassInput;
             }
             else if (isValidString(userClassInput) == false || isStringInVector(PlayerTypes, userClassInput) == false)
             {
@@ -212,14 +207,14 @@ void Mtmchkin::ReadingPlayersFromUser()
             }
             else
             {
-                
+
                 validPlayerName = true;
                 validClassName = true;
             }
         }
         m_players.insert(m_players.end(), StringToUniquePtrPlayer(userInput, userClassInput));
     }
-    std::getline(std::cin,userInput);// clearing whitespaces
+    std::getline(std::cin, userInput); // clearing whitespaces
 }
 
 std::unique_ptr<Player> Mtmchkin::StringToUniquePtrPlayer(const std::string &name, const std::string &m_class)
@@ -236,7 +231,7 @@ std::unique_ptr<Player> Mtmchkin::StringToUniquePtrPlayer(const std::string &nam
 
 bool Mtmchkin::isValidString(const std::string &string)
 {
-    if (string.length() > 15)
+    if (string.length() > MAX_STRING_LENGTH)
     {
         return false;
     }
@@ -268,7 +263,7 @@ void Mtmchkin::playRound()
         printTurnStartMessage(m_players[m_currentPlayerIndex]->getName());
         m_deckOfCards.at(0)->uniqeAction(m_players.at(m_currentPlayerIndex));
         //   std::cout << *m_deckOfCards.at(0) << std::endl;
-        if (m_players.at(m_currentPlayerIndex)->getLevel() >= 10)
+        if (m_players.at(m_currentPlayerIndex)->getLevel() >= WINNING_LEVEL)
         {
 
             m_WinningPlayers.insert(m_WinningPlayers.end(), std::make_move_iterator(m_players.begin() + m_currentPlayerIndex), std::make_move_iterator(m_players.begin() + (m_currentPlayerIndex + 1)));
@@ -298,7 +293,7 @@ void Mtmchkin::playRound()
 
 bool Mtmchkin::isGameOver() const
 {
-    if (int(m_players.size()) <= 0 || m_numberOfRounds >= 100)
+    if (int(m_players.size()) <= 0 || m_numberOfRounds >= MAX_ROUNDS_PER_GAME)
     {
 
         return true;
@@ -313,7 +308,7 @@ int Mtmchkin::getNumberOfRounds() const
 
 void Mtmchkin::printLeaderBoard() const
 {
-    int currentRank = 1;
+    int currentRank = STARTING_RANK;
     printLeaderBoardStartMessage();
     for (int i = 0; i < (int)m_WinningPlayers.size(); i++)
     {
@@ -332,20 +327,19 @@ void Mtmchkin::printLeaderBoard() const
     }
 }
 
-
-bool Mtmchkin::is_empty(std::ifstream& pFile)
+bool Mtmchkin::is_empty(std::ifstream &pFile)
 {
     return pFile.peek() == std::ifstream::traits_type::eof();
 }
 
-bool Mtmchkin::is_blank(std::ifstream& pFile)
+bool Mtmchkin::is_blank(std::ifstream &pFile)
 {
-    
-    pFile.seekg(0,std::ios::end); // points to the end of file
+
+    pFile.seekg(0, std::ios::end); // points to the end of file
     int length = pFile.tellg();
-    if (length==0)
+    if (length == 0)
         return true;
-        pFile.clear();
-pFile.seekg(0);
+    pFile.clear();
+    pFile.seekg(0);
     return false;
 }

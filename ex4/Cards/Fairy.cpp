@@ -1,6 +1,6 @@
 #include "Fairy.h"
 #include "Card.h"
-#include"../Players/Wizard.h"
+#include "../Players/Wizard.h"
 const int hp_heal = 10;
 void Fairy::print(std::ostream &os) const
 {
@@ -15,20 +15,20 @@ Fairy::Fairy()
 
 void Fairy::uniqeAction(std::unique_ptr<Player> &player)
 {
-     try
+    try
     {
-    Wizard&     isWizard=dynamic_cast<Wizard&>(*player);
-    isWizard.heal(hp_heal);
+        Wizard &isWizard = dynamic_cast<Wizard &>(*player);
+        isWizard.heal(hp_heal);
     }
-    catch(const std::bad_cast&)
+    catch (const std::bad_cast &)
     {
-         printFairyMessage(false);
-        
+        printFairyMessage(false);
+
         return;
     }
-    
+
     printFairyMessage(true);
-        return;
+    return;
     /*
     if (Player->getJob() == "Wizard")
     {

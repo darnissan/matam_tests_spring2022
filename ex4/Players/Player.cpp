@@ -15,7 +15,8 @@ Player::Player(string name)
 
 void Player::levelUp()
 {
-    if (m_level < 10) {
+    if (m_level < 10)
+    {
         m_level++;
     }
 }
@@ -26,7 +27,8 @@ int Player::getLevel() const
 
 void Player::buff(int force)
 {
-    if (force > 0) {
+    if (force > 0)
+    {
         m_force += force;
     }
 }
@@ -34,19 +36,24 @@ void Player::buff(int force)
 void Player::unbuff(int force)
 {
     m_force += force;
-    if (m_force<=0)
+    if (m_force <= 0)
     {
-        m_force=0;
+        m_force = 0;
     }
 }
 
 void Player::heal(int heal)
 {
-    if (heal > 0) {
-        if (heal > 0) {
-            if (m_HP + heal < 100) {
+    if (heal > 0)
+    {
+        if (heal > 0)
+        {
+            if (m_HP + heal < 100)
+            {
                 m_HP += heal;
-            } else {
+            }
+            else
+            {
                 m_HP = 100;
             }
         }
@@ -55,10 +62,14 @@ void Player::heal(int heal)
 
 void Player::damage(int damage)
 {
-    if (damage > 0) {
-        if (m_HP - damage > 0) {
+    if (damage > 0)
+    {
+        if (m_HP - damage > 0)
+        {
             m_HP -= damage;
-        } else {
+        }
+        else
+        {
             m_HP = 0;
         }
     }
@@ -72,22 +83,29 @@ bool Player::isKnockedOut() const
 
 void Player::addCoins(int coins)
 {
-    if (coins > 0) {
+    if (coins > 0)
+    {
         m_coins += coins;
     }
 }
 
 bool Player::pay(int pay)
 {
-    if (pay >= 0) {
-        if (m_coins - pay >= 0) {
+    if (pay >= 0)
+    {
+        if (m_coins - pay >= 0)
+        {
             m_coins -= pay;
             return true;
-        } else {
+        }
+        else
+        {
             // std::cout << "Not enough coins";
             return false;
         }
-    } else {
+    }
+    else
+    {
         return true;
     }
 }
@@ -107,10 +125,10 @@ int Player::getCoins() const
     return m_coins;
 }
 
-std::ostream& operator<<(std::ostream& os,const Player& player)
+std::ostream &operator<<(std::ostream &os, const Player &player)
 {
     printPlayerDetails(os, player.m_name, player.getJob(),
-        player.m_level, player.m_force, player.m_HP, player.m_coins);
+                       player.m_level, player.m_force, player.m_HP, player.m_coins);
     return os;
 }
 

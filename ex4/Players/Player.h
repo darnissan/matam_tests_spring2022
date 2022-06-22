@@ -2,7 +2,8 @@
 #define EX4_PLAYER_H
 
 #include <string>
-class Player {
+class Player
+{
 public:
     void totalyDead();
     Player(std::string name);
@@ -19,16 +20,14 @@ public:
     bool isKnockedOut() const;
     int getCoins() const;
     int getHP() const;
-    Player(const Player&) = default;
-    
+    Player(const Player &) = default;
+
     std::string getName() const;
 
-    friend std::ostream& operator<<(std::ostream& os,const Player& player);
+    friend std::ostream &operator<<(std::ostream &os, const Player &player);
     virtual std::string getJob() const = 0;
 
 protected:
-    // I SEE YOU (▀̿Ĺ̯▀̿ ̿)
-
 private:
     std::string m_name;
     int m_level;

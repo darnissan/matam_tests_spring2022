@@ -1,12 +1,14 @@
 #include "Goblin.h"
 #include "Card.h"
-
+const int GOBLIN_FORCE = 6;
+const int GOBLIN_COINS = 2;
+const int GOBLIN_DAMAGE_UPON_LOSS = 10;
 Goblin::Goblin()
 {
     m_cardName = "Goblin";
-    m_force = 6;
-    m_coins = 2;
-    m_damageUponLoss = 10;
+    m_force = GOBLIN_FORCE;
+    m_coins = GOBLIN_COINS;
+    m_damageUponLoss = GOBLIN_DAMAGE_UPON_LOSS;
 }
 void Goblin::print(std::ostream &os) const
 {

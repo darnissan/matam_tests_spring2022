@@ -5,9 +5,10 @@
 #include <iostream>
 #include <stdlib.h>
 #include <string>
-class Dragon : public BattleCard {
+class Dragon : public BattleCard
+{
 protected:
-    virtual void print(std::ostream& os) const override
+    virtual void print(std::ostream &os) const override
     {
         printCardDetails(os, m_cardName);
         printMonsterDetails(os, m_force, m_damageUponLoss, m_coins, true);
@@ -18,10 +19,10 @@ private:
     std::string m_cardName;
 
 public:
-     Card* clone() const  ;
-    void uniqeAction(std::unique_ptr<Player>& player) override;
+    Card *clone() const;
+    void uniqeAction(std::unique_ptr<Player> &player) override;
     Dragon();
-    ~Dragon() {};
+    ~Dragon(){};
 };
 
 #endif /* DRAGON_H_ */

@@ -10,7 +10,7 @@ protected:
 public:
     Exception(const std::string &msg) : m_errorMessage(msg) {}
     virtual ~Exception() {}
-    virtual const char *what() const noexcept 
+    virtual const char *what() const noexcept
     {
         return m_errorMessage.c_str();
     }
@@ -20,7 +20,7 @@ class DeckFileNotFound : public Exception
 public:
     DeckFileNotFound(const std::string &msg) : Exception(msg) {}
     virtual ~DeckFileNotFound() {}
-    virtual const char *what() const noexcept 
+    virtual const char *what() const noexcept
     {
         return "Deck File Error: File not found";
     }
@@ -37,7 +37,7 @@ public:
         m_errorMessage = "Deck File Error: File format error in line " + m_lineNumberInDeckFile;
     }
     virtual ~DeckFileFormatError() {}
-    virtual const char *what() const noexcept 
+    virtual const char *what() const noexcept
     {
 
         return (m_errorMessage.c_str());
@@ -49,7 +49,7 @@ class DeckFileInvalidSize : public Exception
 public:
     DeckFileInvalidSize(const std::string &msg) : Exception(msg){};
     virtual ~DeckFileInvalidSize(){};
-    virtual const char *what() const noexcept 
+    virtual const char *what() const noexcept
     {
         return "Deck File Error: Deck size is invalid";
     }

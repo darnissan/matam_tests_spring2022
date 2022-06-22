@@ -15,6 +15,7 @@ private:
     bool IsIntInRange(int num);
     std::string m_cardName;
     int ReadUserChoiceAndPrintTheRightPrint(std::string input);
+
 public:
     Card *clone() const;
     void uniqeAction(std::unique_ptr<Player> &player) override;

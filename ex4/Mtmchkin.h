@@ -12,6 +12,13 @@
 class Mtmchkin
 {
 private:
+    static const int STARTING_RANK = 1;
+    static const int MAX_ROUNDS_PER_GAME = 100;
+    static const int WINNING_LEVEL = 10;
+    static const int FIRST_LINE_INDEX = 1;
+    static const int MAX_STRING_LENGTH = 15;
+    static const int MAX_TEAM_SIZE = 6;
+    static const int MIN_TEAM_SIZE = 2;
     int m_currentCardIndex;
     int m_currentPlayerIndex;
     int m_numberOfRounds = 0;
@@ -22,8 +29,8 @@ private:
     std::vector<std::unique_ptr<Player>> m_players;
     std::vector<std::unique_ptr<Player>> m_leadBoard;
     bool isStringInVector(const std::vector<const char *> &vector, const std::string &string);
-   bool is_empty(std::ifstream& pFile);
-   bool is_blank(std::ifstream& pFile);
+    bool is_empty(std::ifstream &pFile);
+    bool is_blank(std::ifstream &pFile);
     std::unique_ptr<Card> StringToUniquePtrCard(const std::string &string);
     std::unique_ptr<Player> StringToUniquePtrPlayer(const std::string &name, const std::string &m_class);
     void ReadingCardsFromFile(const std::string fileName);

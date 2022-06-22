@@ -2,13 +2,14 @@
 #include "BattleCard.h"
 #include "Card.h"
 #include <climits>
-
+const int DRAGON_FORCE = 25;
+const int DRAGON_COINS = 1000;
 Dragon::Dragon()
 {
 
     m_cardName = "Dragon";
-    m_force = 25;
-    m_coins = 1000;
+    m_force = DRAGON_FORCE;
+    m_coins = DRAGON_COINS;
     m_damageUponLoss = INT_MAX;
 }
 void Dragon::uniqeAction(std::unique_ptr<Player> &player)
