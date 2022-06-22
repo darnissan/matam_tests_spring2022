@@ -31,3 +31,9 @@ Card *Dragon::clone() const
 {
     return new Dragon();
 }
+void Dragon::print(std::ostream &os) const
+{
+    printCardDetails(os, m_cardName);
+    printMonsterDetails(os, m_force, m_damageUponLoss, m_coins, true);
+    printEndOfCardDetails(os);
+}

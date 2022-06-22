@@ -17,7 +17,7 @@ public:
     Card *clone() const;
     void uniqeAction(std::unique_ptr<Player> &player) override;
     Barfight();
-    ~Barfight(){};
+    ~Barfight() = default;
 };
 
 #endif /* BARFIGHT_H_ */

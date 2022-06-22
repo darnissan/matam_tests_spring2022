@@ -9,7 +9,7 @@ public:
     Wizard &operator=(const Wizard &other) = default;
     Wizard(std::string name)
         : Player(name){};
-    ~Wizard(){};
+    ~Wizard() = default;
     void heal(int heal) override;
     std::string getJob() const override;
 };

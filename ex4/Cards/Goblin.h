@@ -9,10 +9,12 @@ class Goblin : public BattleCard
 {
 private:
 public:
+    Goblin(const Goblin &other) = default;
+    Goblin &operator=(const Goblin &other) = default;
     Card *clone() const;
     void uniqeAction(std::unique_ptr<Player> &player) override;
     Goblin();
-    ~Goblin(){};
+    ~Goblin() = default;
     void print(std::ostream &os) const;
 };
 

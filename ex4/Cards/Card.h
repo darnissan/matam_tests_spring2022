@@ -44,7 +44,7 @@ Card(CardType cardType)
         }
         */
     Card();
-    virtual ~Card(){};
+    virtual ~Card() = default;
 
     // virtual void print(std::ostream &os) const = 0;
 };

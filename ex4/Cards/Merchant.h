@@ -22,7 +22,7 @@ public:
     Card *clone() const;
     void uniqeAction(std::unique_ptr<Player> &player) override;
     Merchant();
-    ~Merchant(){};
+    ~Merchant() = default;
 };
 
 #endif /* MERCHANT_H_ */

@@ -19,7 +19,7 @@ public:
     Card *clone() const;
     void uniqeAction(std::unique_ptr<Player> &player) override;
     Treasure();
-    ~Treasure(){};
+    ~Treasure() = default;
 };
 
 #endif /* TREASURE_H_ */

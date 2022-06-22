@@ -9,7 +9,7 @@ public:
     Rogue &operator=(const Rogue &other) = default;
     Rogue(std::string name)
         : Player(name){};
-    ~Rogue(){};
+    ~Rogue() = default;
     void addCoins(int coins) override;
     std::string getJob() const override;
 };

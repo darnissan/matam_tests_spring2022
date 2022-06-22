@@ -10,7 +10,7 @@ public:
     Fighter &operator=(const Fighter &other) = default;
     Fighter(std::string name)
         : Player(name){};
-    ~Fighter(){};
+    ~Fighter() = default;
     int getAttackStrength() const override;
     std::string getJob() const override;
 };

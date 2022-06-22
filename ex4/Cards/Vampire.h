@@ -16,7 +16,7 @@ public:
     Card *clone() const;
     void uniqeAction(std::unique_ptr<Player> &player) override;
     Vampire();
-    ~Vampire(){};
+    ~Vampire() = default;
     void print(std::ostream &os) const;
 };
 

@@ -14,10 +14,12 @@ private:
     std::string m_cardName;
 
 public:
+    Fairy(const Fairy &other) = default;
+    Fairy &operator=(const Fairy &other) = default;
     Card *clone() const;
     void uniqeAction(std::unique_ptr<Player> &player) override;
     Fairy();
-    ~Fairy(){};
+    ~Fairy() = default;
 };
 
 #endif /* FAIRY_H_ */

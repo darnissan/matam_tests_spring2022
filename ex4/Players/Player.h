@@ -21,7 +21,7 @@ public:
     int getCoins() const;
     int getHP() const;
     Player(const Player &) = default;
-
+    ~Player() = default;
     std::string getName() const;
 
     friend std::ostream &operator<<(std::ostream &os, const Player &player);
