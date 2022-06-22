@@ -17,6 +17,8 @@ private:
     int ReadUserChoiceAndPrintTheRightPrint(std::string input);
 
 public:
+    Merchant(const Merchant &other) = default;
+    Merchant &operator=(const Merchant &other) = default;
     Card *clone() const;
     void uniqeAction(std::unique_ptr<Player> &player) override;
     Merchant();

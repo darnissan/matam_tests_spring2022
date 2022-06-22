@@ -12,6 +12,8 @@ protected:
 
 private:
 public:
+    Barfight(const Barfight &other) = default;
+    Barfight &operator=(const Barfight &other) = default;
     Card *clone() const;
     void uniqeAction(std::unique_ptr<Player> &player) override;
     Barfight();

@@ -21,6 +21,8 @@ private:
     // std::unique_ptr<Card> m_currentCardType;
 
 public:
+    Card(const Card &other) = default;
+    Card &operator=(const Card &other) = default;
     virtual Card *clone() const = 0;
     virtual void uniqeAction(std::unique_ptr<Player> &player) = 0;
     /*

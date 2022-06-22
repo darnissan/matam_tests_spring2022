@@ -18,7 +18,9 @@ protected:
 
 private:
 public:
+    BattleCard(const BattleCard &other) = default;
+    BattleCard &operator=(const BattleCard &other) = default;
     BattleCard();
-    virtual ~BattleCard(){};
+    virtual ~BattleCard() = default;
 };
 #endif /* BATTLECARD_H_ */

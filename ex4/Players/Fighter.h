@@ -6,6 +6,8 @@ class Fighter : public Player
 {
 
 public:
+    Fighter(const Fighter &other) = default;
+    Fighter &operator=(const Fighter &other) = default;
     Fighter(std::string name)
         : Player(name){};
     ~Fighter(){};

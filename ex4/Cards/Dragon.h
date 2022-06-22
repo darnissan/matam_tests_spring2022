@@ -19,6 +19,8 @@ private:
     std::string m_cardName;
 
 public:
+    Dragon(const Dragon &other) = default;
+    Dragon &operator=(const Dragon &other) = default;
     Card *clone() const;
     void uniqeAction(std::unique_ptr<Player> &player) override;
     Dragon();

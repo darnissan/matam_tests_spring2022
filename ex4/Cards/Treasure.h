@@ -14,6 +14,8 @@ private:
     std::string m_cardName;
 
 public:
+    Treasure(const Treasure &other) = default;
+    Treasure &operator=(const Treasure &other) = default;
     Card *clone() const;
     void uniqeAction(std::unique_ptr<Player> &player) override;
     Treasure();

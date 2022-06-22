@@ -29,6 +29,8 @@ public:
 
 protected:
 private:
+    Player(const Player &other) = default;
+    Player &operator=(const Player &other) = default;
     std::string m_name;
     int m_level;
     int m_force;

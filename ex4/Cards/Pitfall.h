@@ -14,6 +14,8 @@ private:
     std::string m_cardName;
 
 public:
+    Pitfall(const Pitfall &other) = default;
+    Pitfall &operator=(const Pitfall &other) = default;
     Card *clone() const;
     void uniqeAction(std::unique_ptr<Player> &player) override;
     Pitfall();

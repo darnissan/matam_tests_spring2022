@@ -5,6 +5,8 @@
 class Rogue : public Player
 {
 public:
+    Rogue(const Rogue &other) = default;
+    Rogue &operator=(const Rogue &other) = default;
     Rogue(std::string name)
         : Player(name){};
     ~Rogue(){};

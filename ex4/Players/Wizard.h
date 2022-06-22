@@ -5,6 +5,8 @@
 class Wizard : public Player
 {
 public:
+    Wizard(const Wizard &other) = default;
+    Wizard &operator=(const Wizard &other) = default;
     Wizard(std::string name)
         : Player(name){};
     ~Wizard(){};

@@ -12,7 +12,7 @@
 class Mtmchkin
 {
 private:
-    static const int INVALID_TEAM_SIZE=-1;
+    static const int INVALID_TEAM_SIZE = -1;
     static const int STARTING_RANK = 1;
     static const int MAX_ROUNDS_PER_GAME = 100;
     static const int WINNING_LEVEL = 10;
@@ -37,6 +37,8 @@ private:
     void ReadingCardsFromFile(const std::string fileName);
     void ReadingPlayersFromUser();
     bool isValidString(const std::string &string);
+    Mtmchkin(const Mtmchkin &mtmchkin) = delete;
+    Mtmchkin &operator=(const Mtmchkin &mtmchkin) = delete;
 
 public:
     /*
@@ -46,7 +48,7 @@ public:
      * @return
      *      A new instance of Mtmchkin.
      */
-     explicit Mtmchkin(const std::string &fileName);
+    explicit Mtmchkin(const std::string &fileName);
     ~Mtmchkin();
 
     /*
