@@ -37,7 +37,7 @@ private:
      * @return true
      * @return false
      */
-    bool isStringInVector(const std::vector<const char *> &vector, const std::string &string);
+    bool isStringInVector(const std::vector<const char *> &vector, const std::string &string) const;
     /**
      * @brief returns if file is empty
      *
@@ -45,7 +45,7 @@ private:
      * @return true
      * @return false
      */
-    bool is_empty(std::ifstream &pFile);
+    bool is_empty(std::ifstream &pFile) const;
     /**
      * @brief return if file is blank
      *
@@ -53,14 +53,14 @@ private:
      * @return true
      * @return false
      */
-    bool is_blank(std::ifstream &pFile);
+    bool is_blank(std::ifstream &pFile) const;
     /**
      * @brief returns unique ptr to the correct Card
      *
      * @param string
      * @return std::unique_ptr<Card>
      */
-    std::unique_ptr<Card> StringToUniquePtrCard(const std::string &string);
+    std::unique_ptr<Card> StringToUniquePtrCard(const std::string &string) const;
     /**
      * @brief returns the unique ptr for the correct player
      *
@@ -68,7 +68,7 @@ private:
      * @param m_class
      * @return std::unique_ptr<Player>
      */
-    std::unique_ptr<Player> StringToUniquePtrPlayer(const std::string &name, const std::string &m_class);
+    std::unique_ptr<Player> StringToUniquePtrPlayer(const std::string &name, const std::string &m_class) const;
     /**
      * @brief reads the cards from the database
      *
@@ -87,7 +87,7 @@ private:
      * @return true
      * @return false
      */
-    bool isValidString(const std::string &string);
+    bool isValidString(const std::string &string) const;
 
     Mtmchkin(const Mtmchkin &mtmchkin) = delete;
     Mtmchkin &operator=(const Mtmchkin &mtmchkin) = delete;

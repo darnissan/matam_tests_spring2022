@@ -33,7 +33,7 @@ Mtmchkin::Mtmchkin(const std::string &fileName)
     m_currentPlayerIndex = 0;
 }
 
-bool Mtmchkin::isStringInVector(const std::vector<const char *> &vector, const std::string &string)
+bool Mtmchkin::isStringInVector(const std::vector<const char *> &vector, const std::string &string) const
 {
     for (int i = 0; i < (int)vector.size(); i++)
     {
@@ -173,7 +173,7 @@ void Mtmchkin::ReadingPlayersFromUser()
     std::getline(std::cin, userInput); // clearing whitespaces
 }
 
-std::unique_ptr<Player> Mtmchkin::StringToUniquePtrPlayer(const std::string &name, const std::string &m_class)
+std::unique_ptr<Player> Mtmchkin::StringToUniquePtrPlayer(const std::string &name, const std::string &m_class) const
 {
     if (m_class == "Fighter")
         return std::unique_ptr<Player>{new Fighter(name)};
@@ -185,7 +185,7 @@ std::unique_ptr<Player> Mtmchkin::StringToUniquePtrPlayer(const std::string &nam
         return nullptr;
 }
 
-bool Mtmchkin::isValidString(const std::string &string)
+bool Mtmchkin::isValidString(const std::string &string) const
 {
     if (string.length() > MAX_STRING_LENGTH)
     {
@@ -281,12 +281,12 @@ void Mtmchkin::printLeaderBoard() const
     }
 }
 
-bool Mtmchkin::is_empty(std::ifstream &pFile)
+bool Mtmchkin::is_empty(std::ifstream &pFile) const
 {
     return pFile.peek() == std::ifstream::traits_type::eof();
 }
 
-bool Mtmchkin::is_blank(std::ifstream &pFile)
+bool Mtmchkin::is_blank(std::ifstream &pFile) const
 {
 
     pFile.seekg(0, std::ios::end); // points to the end of file
