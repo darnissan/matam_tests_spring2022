@@ -23,7 +23,7 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
-Mtmchkin::Mtmchkin(const std::string fileName)
+Mtmchkin::Mtmchkin(const std::string &fileName)
 {
 
     printStartGameMessage();
