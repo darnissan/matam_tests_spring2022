@@ -34,8 +34,3 @@ void Vampire::print(std::ostream &os) const
     printMonsterDetails(os, m_force, m_damageUponLoss, m_coins);
     printEndOfCardDetails(os);
 }
-
-Card *Vampire::clone() const
-{
-    return new Vampire();
-}

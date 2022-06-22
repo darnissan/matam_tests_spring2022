@@ -32,12 +32,7 @@ public:
      * @return Dragon&
      */
     Dragon &operator=(const Dragon &other) = default;
-    /**
-     * @brief clone constructor
-     *
-     * @return Card*
-     */
-    Card *clone() const;
+
     /**
      * @brief applying the unique action
      *

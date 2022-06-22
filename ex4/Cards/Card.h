@@ -17,11 +17,8 @@ protected:
      * @param card
      * @return std::ostream&
      */
-    friend std::ostream &operator<<(std::ostream &os, const Card &card)
-    {
-        card.print(os);
-        return os;
-    }
+    friend std::ostream &operator<<(std::ostream &os, const Card &card);
+
     /**
      * @brief printing function
      *
@@ -44,12 +41,7 @@ public:
      * @return Card&
      */
     Card &operator=(const Card &other) = default;
-    /**
-     * @brief clone constructor
-     *
-     * @return Card*
-     */
-    virtual Card *clone() const = 0;
+
     /**
      * @brief applying the unique action
      *

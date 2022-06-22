@@ -30,7 +30,3 @@ void Fairy::uniqeAction(std::unique_ptr<Player> &player)
     printFairyMessage(true);
     return;
 }
-Card *Fairy::clone() const
-{
-    return new Fairy();
-}

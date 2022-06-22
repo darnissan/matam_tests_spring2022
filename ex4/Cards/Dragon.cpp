@@ -27,10 +27,7 @@ void Dragon::uniqeAction(std::unique_ptr<Player> &player)
         player->totalyDead();
     }
 }
-Card *Dragon::clone() const
-{
-    return new Dragon();
-}
+
 void Dragon::print(std::ostream &os) const
 {
     printCardDetails(os, m_cardName);

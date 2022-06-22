@@ -32,12 +32,7 @@ public:
      * @return Fairy&
      */
     Fairy &operator=(const Fairy &other) = default;
-    /**
-     * @brief clone constructor
-     *
-     * @return Card*
-     */
-    Card *clone() const;
+
     /**
      * @brief applying the unique action
      *

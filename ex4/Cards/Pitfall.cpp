@@ -30,7 +30,3 @@ void Pitfall::uniqeAction(std::unique_ptr<Player> &player)
     printPitfallMessage(true);
     return;
 }
-Card *Pitfall::clone() const
-{
-    return new Pitfall();
-}

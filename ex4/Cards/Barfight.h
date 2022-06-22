@@ -25,12 +25,7 @@ public:
      * @return Barfight&
      */
     Barfight &operator=(const Barfight &other) = default;
-    /**
-     * @brief return the constructor
-     *
-     * @return Card*
-     */
-    Card *clone() const;
+
     /**
      * @brief applying the uniqueAction of the Card
      *

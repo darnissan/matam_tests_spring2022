@@ -24,12 +24,7 @@ public:
      * @return Vampire&
      */
     Vampire &operator=(const Vampire &other) = default;
-    /**
-     * @brief clone operator
-     *
-     * @return Card*
-     */
-    Card *clone() const;
+
     /**
      * @brief applying the unique action
      *

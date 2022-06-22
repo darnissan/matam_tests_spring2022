@@ -32,12 +32,7 @@ public:
      * @return Merchant&
      */
     Merchant &operator=(const Merchant &other) = default;
-    /**
-     * @brief clone constructor
-     *
-     * @return Card*
-     */
-    Card *clone() const;
+
     /**
      * @brief applying the unique asction
      *

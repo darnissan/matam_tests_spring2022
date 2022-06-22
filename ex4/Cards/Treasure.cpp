@@ -19,7 +19,3 @@ void Treasure::uniqeAction(std::unique_ptr<Player> &player)
     int coins = treasure_coins;
     player->addCoins(coins);
 }
-Card *Treasure::clone() const
-{
-    return new Treasure();
-}

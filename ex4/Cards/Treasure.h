@@ -32,12 +32,7 @@ public:
      * @return Treasure&
      */
     Treasure &operator=(const Treasure &other) = default;
-    /**
-     * @brief clone constructor
-     *
-     * @return Card*
-     */
-    Card *clone() const;
+
     /**
      * @brief unique Action
      *
