@@ -8,20 +8,51 @@
 class Merchant : public Card
 {
 protected:
+    /**
+     * @brief prinitng function
+     *
+     * @param os
+     */
     virtual void print(std::ostream &os) const override;
 
 private:
-    int IsValidInput(std::string input);
-    bool IsIntInRange(int num);
     std::string m_cardName;
-    int ReadUserChoiceAndPrintTheRightPrint(std::string input);
 
 public:
+    /**
+     * @brief Construct a new Merchant object
+     *
+     * @param other
+     */
     Merchant(const Merchant &other) = default;
+    /**
+     * @brief assignment operator
+     *
+     * @param other
+     * @return Merchant&
+     */
     Merchant &operator=(const Merchant &other) = default;
+    /**
+     * @brief clone constructor
+     *
+     * @return Card*
+     */
     Card *clone() const;
+    /**
+     * @brief applying the unique asction
+     *
+     * @param player
+     */
     void uniqeAction(std::unique_ptr<Player> &player) override;
+    /**
+     * @brief Construct a new Merchant object
+     *
+     */
     Merchant();
+    /**
+     * @brief Destroy the Merchant object
+     *
+     */
     ~Merchant() = default;
 };
 

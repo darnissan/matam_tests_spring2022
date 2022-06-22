@@ -8,22 +8,51 @@
 class Dragon : public BattleCard
 {
 protected:
-    virtual void print(std::ostream &os) const override
-    {
-        printCardDetails(os, m_cardName);
-        printMonsterDetails(os, m_force, m_damageUponLoss, m_coins, true);
-        printEndOfCardDetails(os);
-    }
+    /**
+     * @brief printing function
+     *
+     * @param os
+     */
+    virtual void print(std::ostream &os) const override;
 
 private:
     std::string m_cardName;
 
 public:
+    /**
+     * @brief Construct a new Dragon object
+     *
+     * @param other
+     */
     Dragon(const Dragon &other) = default;
+    /**
+     * @brief assignment operator
+     *
+     * @param other
+     * @return Dragon&
+     */
     Dragon &operator=(const Dragon &other) = default;
+    /**
+     * @brief clone constructor
+     *
+     * @return Card*
+     */
     Card *clone() const;
+    /**
+     * @brief applying the unique action
+     *
+     * @param player
+     */
     void uniqeAction(std::unique_ptr<Player> &player) override;
+    /**
+     * @brief Construct a new Dragon object
+     *
+     */
     Dragon();
+    /**
+     * @brief Destroy the Dragon object
+     *
+     */
     ~Dragon() = default;
 };
 

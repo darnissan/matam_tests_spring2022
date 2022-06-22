@@ -29,18 +29,6 @@ void Pitfall::uniqeAction(std::unique_ptr<Player> &player)
 
     printPitfallMessage(true);
     return;
-    /*
-    if (player->getJob() == "Rogue")
-    {
-        printPitfallMessage(true);
-        return;
-    }
-    else
-    {
-        printPitfallMessage(false);
-        player->damage(hp_damage);
-    }
-    */
 }
 Card *Pitfall::clone() const
 {

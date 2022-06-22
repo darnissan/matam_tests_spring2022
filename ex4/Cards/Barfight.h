@@ -12,11 +12,40 @@ protected:
 
 private:
 public:
+    /**
+     * @brief Construct a new Barfight object
+     *
+     * @param other
+     */
     Barfight(const Barfight &other) = default;
+    /**
+     * @brief assignment operator
+     *
+     * @param other
+     * @return Barfight&
+     */
     Barfight &operator=(const Barfight &other) = default;
+    /**
+     * @brief return the constructor
+     *
+     * @return Card*
+     */
     Card *clone() const;
+    /**
+     * @brief applying the uniqueAction of the Card
+     *
+     * @param player
+     */
     void uniqeAction(std::unique_ptr<Player> &player) override;
+    /**
+     * @brief Construct a new Barfight object
+     *
+     */
     Barfight();
+    /**
+     * @brief Destroy the Barfight object
+     *
+     */
     ~Barfight() = default;
 };
 

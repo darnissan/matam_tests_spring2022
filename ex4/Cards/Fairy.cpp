@@ -29,18 +29,6 @@ void Fairy::uniqeAction(std::unique_ptr<Player> &player)
 
     printFairyMessage(true);
     return;
-    /*
-    if (Player->getJob() == "Wizard")
-    {
-        printFairyMessage(true);
-        Player->heal(hp_heal);
-    }
-    else
-    {
-        printFairyMessage(false);
-        return;
-    }
-    */
 }
 Card *Fairy::clone() const
 {

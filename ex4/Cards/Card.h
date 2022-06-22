@@ -10,42 +10,61 @@ class Card
 {
 protected:
     std::string m_cardName;
+    /**
+     * @brief printing operator
+     *
+     * @param os
+     * @param card
+     * @return std::ostream&
+     */
     friend std::ostream &operator<<(std::ostream &os, const Card &card)
     {
         card.print(os);
         return os;
     }
+    /**
+     * @brief printing function
+     *
+     * @param os
+     */
     virtual void print(std::ostream &os) const = 0;
 
 private:
-    // std::unique_ptr<Card> m_currentCardType;
-
 public:
+    /**
+     * @brief Construct a new Card object
+     *
+     * @param other
+     */
     Card(const Card &other) = default;
+    /**
+     * @brief assignment operator
+     *
+     * @param other
+     * @return Card&
+     */
     Card &operator=(const Card &other) = default;
+    /**
+     * @brief clone constructor
+     *
+     * @return Card*
+     */
     virtual Card *clone() const = 0;
+    /**
+     * @brief applying the unique action
+     *
+     * @param player
+     */
     virtual void uniqeAction(std::unique_ptr<Player> &player) = 0;
-    /*
-Card(CardType cardType)
-{
-    switch (cardType)
-    {
-    case CardType::Barfight1:
-        return Barfight();
-        break;
-    case CardType::Dragon:
-        return Dragon();
-        break;
-        {
-            m_cardName = cardName;
-            switch ()
-            {
-            }
-        }
-        */
+    /**
+     * @brief Construct a new Card object
+     *
+     */
     Card();
+    /**
+     * @brief Destroy the Card object
+     *
+     */
     virtual ~Card() = default;
-
-    // virtual void print(std::ostream &os) const = 0;
 };
 #endif /* CARD_H_ */

@@ -29,18 +29,6 @@ void Barfight::uniqeAction(std::unique_ptr<Player> &player)
 
     printBarfightMessage(true);
     return;
-    /*
-    if (player->getJob() == "Fighter")
-    {
-        printBarfightMessage(true);
-        return;
-    }
-    else
-    {
-        printBarfightMessage(false);
-        player->damage(hp_damage);
-    }
-    */
 }
 Card *Barfight::clone() const
 {

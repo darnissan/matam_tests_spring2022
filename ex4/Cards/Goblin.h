@@ -9,12 +9,46 @@ class Goblin : public BattleCard
 {
 private:
 public:
+    /**
+     * @brief Construct a new Goblin object
+     *
+     * @param other
+     */
     Goblin(const Goblin &other) = default;
+    /**
+     * @brief assignment operator
+     *
+     * @param other
+     * @return Goblin&
+     */
     Goblin &operator=(const Goblin &other) = default;
+    /**
+     * @brief clone constructor
+     *
+     * @return Card*
+     */
     Card *clone() const;
+    /**
+     * @brief applying the unique action
+     *
+     * @param player
+     */
     void uniqeAction(std::unique_ptr<Player> &player) override;
+    /**
+     * @brief Construct a new Goblin object
+     *
+     */
     Goblin();
+    /**
+     * @brief Destroy the Goblin object
+     *
+     */
     ~Goblin() = default;
+    /**
+     * @brief printing function
+     *
+     * @param os
+     */
     void print(std::ostream &os) const;
 };
 
