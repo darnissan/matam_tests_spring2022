@@ -12,6 +12,7 @@
 class Mtmchkin
 {
 private:
+    static const int INVALID_TEAM_SIZE=-1;
     static const int STARTING_RANK = 1;
     static const int MAX_ROUNDS_PER_GAME = 100;
     static const int WINNING_LEVEL = 10;

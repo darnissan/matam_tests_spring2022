@@ -166,11 +166,11 @@ void Mtmchkin::ReadingPlayersFromUser()
             // std::cout<<"this prints from the catch"<<std::endl;
             // printInvalidTeamSize();
             // printEnterTeamSizeMessage();
-            m_numberOfPlayers--;
+            m_numberOfPlayers=INVALID_TEAM_SIZE;;
         }
         catch (std::out_of_range)
         {
-            m_numberOfPlayers--;
+            m_numberOfPlayers=INVALID_TEAM_SIZE;
             validTeamSize = false;
         }
 
