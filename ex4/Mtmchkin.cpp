@@ -27,9 +27,6 @@ Mtmchkin::Mtmchkin(const std::string &fileName)
 {
 
     printStartGameMessage();
-    // std::map<char *, std::unique_ptr<Card>> mapStringToCard = {"Barfight ", std::unique_ptr<Barfight>{new Barfight()}};
-
-    // CardType *currentCardType;
     ReadingCardsFromFile(fileName);
     m_currentCardIndex = 0;
     ReadingPlayersFromUser();
@@ -48,41 +45,7 @@ bool Mtmchkin::isStringInVector(const std::vector<const char *> &vector, const s
     }
     return false;
 }
-/*
-std::unique_ptr<Card> Mtmchkin::StringToUniquePtrCard(const std::string& string)
-{
-    if (string == "Barfight")
-        return std::unique_ptr<Card> { new Barfight() };
-    else if (string == "Dragon")
-        return std::unique_ptr<BattleCard> { new Dragon() };
-    else if (string == "Fairy")
-        return std::unique_ptr<Card> { new Fairy() };
-    else if (string == "Goblin")
-        return std::unique_ptr<Card> { new Goblin() };
-    else if (string == "Pitfall")
-        return std::uniq3ue_ptr<Card> { new Pitfall() };
-    else if (string == "Treasure")
-        return std::unique_ptr<Card> { new Treasure() };
-    else if (string == "Vampire")
-        return std::unique_ptr<Card> { new Vampire() };
-    else
-        return nullptr;
-}
-*/
-/*
-std::unique_ptr<Card> Mtmchkin::StringToUniquePtrCard(const std::string &string)
-{
-    Barfight *barfight = new Barfight();
-    Dragon *dragon = new Dragon();
-    Fairy *fairy = new Fairy();
-    Goblin *goblin = new Goblin();
-    Pitfall *pitfall = new Pitfall();
-    Treasure *treasure = new Treasure();
-    Vampire *vampire = new Vampire();
-    std::map<std::string, Card *> mapStringToCard = {{"Barfight", barfight->clone()}, {"Dragon", dragon->clone()}, {"Fairy", fairy->clone()}, {"Goblin", goblin->clone()}, {"Pitfall", pitfall->clone()}, {"Treasure", treasure->clone()}, {"Vampire", vampire->clone()}};
-    return std::unique_ptr<Card>{mapStringToCard[string]};
-}
-*/
+
 Mtmchkin::~Mtmchkin()
 {
     m_players.clear();
@@ -106,10 +69,8 @@ void Mtmchkin::ReadingCardsFromFile(const std::string fileName)
             throw DeckFileInvalidSize("Deck File Error: Deck size is invalid");
         }
     }
-    catch (...)
+    catch (const std::exception &e)
     {
-        // mapStringToCard.clear();
-
         throw;
     }
     int lineNumber = FIRST_LINE_INDEX;
@@ -129,8 +90,7 @@ void Mtmchkin::ReadingCardsFromFile(const std::string fileName)
         }
         else
         {
-            // std::unique_ptr<Card> currentCard = Card::Card(cardTypeMap[line]);
-            // m_deckOfCards->insert(m_deckOfCards->end(), StringToUniquePtrCard(line));
+
             currentCard = mapStringToCard.at(line);
             m_deckOfCards.push_back(currentCard);
             lineNumber++;
@@ -152,25 +112,21 @@ void Mtmchkin::ReadingPlayersFromUser()
     {
         printEnterTeamSizeMessage();
         std::getline(std::cin, userInput);
-        // std::cout<<"current input been tested is :"<<userInput<<std::endl;
+
         try
         {
             m_numberOfPlayers = std::stoi(userInput);
-            // std::cout<<"this prints from the if"<<std::endl;
-            // printInvalidTeamSize();
-            // printEnterTeamSizeMessage();
         }
         catch (std::invalid_argument const &ex)
         {
             validTeamSize = false;
-            // std::cout<<"this prints from the catch"<<std::endl;
-            // printInvalidTeamSize();
-            // printEnterTeamSizeMessage();
-            m_numberOfPlayers=INVALID_TEAM_SIZE;;
+
+            m_numberOfPlayers = INVALID_TEAM_SIZE;
+            ;
         }
         catch (std::out_of_range)
         {
-            m_numberOfPlayers=INVALID_TEAM_SIZE;
+            m_numberOfPlayers = INVALID_TEAM_SIZE;
             validTeamSize = false;
         }
 
@@ -262,20 +218,18 @@ void Mtmchkin::playRound()
     {
         printTurnStartMessage(m_players[m_currentPlayerIndex]->getName());
         m_deckOfCards.at(0)->uniqeAction(m_players.at(m_currentPlayerIndex));
-        //   std::cout << *m_deckOfCards.at(0) << std::endl;
+
         if (m_players.at(m_currentPlayerIndex)->getLevel() >= WINNING_LEVEL)
         {
 
             m_WinningPlayers.insert(m_WinningPlayers.end(), std::make_move_iterator(m_players.begin() + m_currentPlayerIndex), std::make_move_iterator(m_players.begin() + (m_currentPlayerIndex + 1)));
             m_players.erase(m_players.begin() + m_currentPlayerIndex);
-            // m_currentPlayerIndex--;
         }
         else if (m_players.at(m_currentPlayerIndex)->isKnockedOut())
         {
 
             m_LosingPlayers.insert(m_LosingPlayers.end(), std::make_move_iterator(m_players.begin() + m_currentPlayerIndex), std::make_move_iterator(m_players.begin() + (m_currentPlayerIndex + 1)));
             m_players.erase(m_players.begin() + m_currentPlayerIndex);
-            // m_currentPlayerIndex--;
         }
 
         else
